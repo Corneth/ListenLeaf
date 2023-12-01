@@ -22,9 +22,12 @@
         android:layout_height="0dp"
         android:layout_marginTop="84dp"
         android:layout_marginBottom="534dp"
-        android:text=""
+        android:text="Listen Leaf"
+        android:textSize="48sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/signupbtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
