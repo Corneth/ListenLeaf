@@ -25,4 +25,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        // to restart the video after coming from other activity
+        videoBackground.start();
+    }
+
 }
