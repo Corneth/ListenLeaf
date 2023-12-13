@@ -2,8 +2,12 @@ package com.example.listenleaf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.VideoView;
 
 public class HomePage extends AppCompatActivity {
@@ -24,6 +28,15 @@ public class HomePage extends AppCompatActivity {
                 mp.setLooping(true);
             }
         });
+
+
+        ImageButton goToSignUpV = findViewById(R.id.addNewAccountImgButt);
+        goToSignUpV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoToSignUp();
+            };
+        });
     }
 
     @Override
@@ -31,5 +44,11 @@ public class HomePage extends AppCompatActivity {
         super.onResume();
         // to restart the video after coming from other activity
         videoBackground.start();
+    }
+
+    public void GoToSignUp()
+    {
+        Intent intent = new Intent(this, SignUp_Page.class);
+        startActivity(intent);
     }
 }
