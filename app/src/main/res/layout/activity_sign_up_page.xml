@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dgreenleafwithh20bubble"
     tools:context=".SignUp_Page">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
