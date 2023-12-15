@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Listen Leaf</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="welcome">Welcome To ListenLeaf. Please login to continue.</string>
+    <string name="remember">Remember Me</string>
+    <string name="login">Login</string>
+    <string name="or_spacer">OR</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot">Forgot Password?</string>
 </resources>
