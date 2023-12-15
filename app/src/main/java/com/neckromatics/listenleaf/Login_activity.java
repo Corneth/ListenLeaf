@@ -51,7 +51,8 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        saveLoginCheckbox = findViewById(R.id.Remember_Me);
+        // Creation of login saving information so we don't have to keep logging in every time we open
+        // the app based off the remember me checkbox
         loginPreferences = getSharedPreferences("saveLogin",MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
 
@@ -62,15 +63,16 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
             saveLoginCheckbox.setChecked(true);
         }
 
-
+        // view finders
+        saveLoginCheckbox = findViewById(R.id.Remember_Me);
         login_btn = findViewById(R.id.btn_login);
         textInputLayoutUsername = findViewById(R.id.inputLayoutUsername);
-        textInputLayoutUsername.setHintTextColor(ColorStateList.valueOf(getResources().getColor(R.color.accent2)));
         textInputLayoutPassword = findViewById(R.id.inputLayoutpassword);
         Username = findViewById(R.id.Username);
         Password = findViewById(R.id.password);
         videoBackground = findViewById(R.id.t_background);
         Forgot_password = findViewById(R.id.Forgot_password);
+
 
         login_btn.setOnClickListener(this);
 
@@ -78,11 +80,6 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         videoBackground.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.t_background);
         videoBackground.start();
 
-        // Firebase Auth
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        // Listening for changes in the authentication state and responds accordingly
-        // when the state changes
 
         Forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +91,11 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
+        // Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        // Listening for changes in the authentication state and responds accordingly
+        // when the state changes
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -102,6 +104,7 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
                 // Check if the user is logged in or not
                 if (currentUser != null) {
                     // User already logged in
+
                 } else {
                     // The user signed out
                 }
