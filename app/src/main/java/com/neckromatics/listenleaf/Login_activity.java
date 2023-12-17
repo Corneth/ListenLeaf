@@ -102,7 +102,7 @@ public class Login_activity extends AppCompatActivity {
                 // Check if the user is logged in or not
                 if (currentUser != null) {
                     // User already logged in
-                    Intent i = new Intent(Login_activity.this, Homepage_activity.class);
+                    Intent i = new Intent(Login_activity.this, HomePage.class);
                     startActivity(i);
                     finish();
                 } else {
@@ -146,7 +146,7 @@ public class Login_activity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Sign in success
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                                Intent i = new Intent(Login_activity.this, Homepage_activity.class);
+                                Intent i = new Intent(Login_activity.this, HomePage.class);
                                 startActivity(i);
                                 finish(); // Optional: finish the current activity to prevent going back
                             } else {

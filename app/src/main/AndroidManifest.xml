@@ -16,7 +16,7 @@
             android:name=".Book_Reader"
             android:exported="false" />
         <activity
-            android:name=".Homepage_activity"
+            android:name=".HomePage"
             android:exported="false" />
         <activity
             android:name=".signup_activity"
