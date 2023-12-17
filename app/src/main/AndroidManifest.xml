@@ -13,7 +13,10 @@
         android:theme="@style/Theme.ListenLeaf"
         tools:targetApi="31">
         <activity
-            android:name=".HomepageActivity"
+            android:name=".Book_Reader"
+            android:exported="false" />
+        <activity
+            android:name=".Homepage_activity"
             android:exported="false" />
         <activity
             android:name=".signup_activity"

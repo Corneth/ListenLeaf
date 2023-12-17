@@ -8,4 +8,7 @@
     <string name="or_spacer">OR</string>
     <string name="sign_up">Sign Up</string>
     <string name="forgot">Forgot Password?</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>
