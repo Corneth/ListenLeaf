@@ -26,14 +26,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Login_activity extends AppCompatActivity implements View.OnClickListener {
+public class Login_activity extends AppCompatActivity {
     VideoView videoBackground;
-    Button login_btn;
+    Button login_btn,signup_btn;
     TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
     TextView Username, Password,Forgot_password;
     CheckBox saveLoginCheckbox;
-
-
     SharedPreferences loginPreferences;
     SharedPreferences.Editor loginPrefsEditor;
     Boolean saveLogin;
@@ -57,7 +55,7 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         loginPrefsEditor = loginPreferences.edit();
 
         saveLogin = loginPreferences.getBoolean("saveLogin",false);
-        if (saveLogin == true) {
+        if (saveLogin) {
             Username.setText(loginPreferences.getString("username", ""));
             Password.setText(loginPreferences.getString("password", ""));
             saveLoginCheckbox.setChecked(true);
@@ -66,6 +64,7 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         // view finders
         saveLoginCheckbox = findViewById(R.id.Remember_Me);
         login_btn = findViewById(R.id.btn_login);
+        signup_btn = findViewById(R.id.signup_btn);
         textInputLayoutUsername = findViewById(R.id.inputLayoutUsername);
         textInputLayoutPassword = findViewById(R.id.inputLayoutpassword);
         Username = findViewById(R.id.Username);
@@ -74,7 +73,6 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         Forgot_password = findViewById(R.id.Forgot_password);
 
 
-        login_btn.setOnClickListener(this);
 
         videoBackground.setMediaController(null);
         videoBackground.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.t_background);
@@ -104,9 +102,12 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
                 // Check if the user is logged in or not
                 if (currentUser != null) {
                     // User already logged in
-
+                    Intent i = new Intent(Login_activity.this, Homepage_activity.class);
+                    startActivity(i);
+                    finish();
                 } else {
                     // The user signed out
+
                 }
             }
         };
@@ -115,6 +116,14 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 logEmailPassUser(Username.getText().toString().trim(), Password.getText().toString().trim());
+            }
+        });
+        signup_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Login_activity.this, signup_activity.class);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -137,7 +146,7 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
                             if (task.isSuccessful()) {
                                 // Sign in success
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                                Intent i = new Intent(Login_activity.this, HomepageActivity.class);
+                                Intent i = new Intent(Login_activity.this, Homepage_activity.class);
                                 startActivity(i);
                                 finish(); // Optional: finish the current activity to prevent going back
                             } else {
@@ -161,10 +170,6 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         videoBackground.start();
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 
 
 }

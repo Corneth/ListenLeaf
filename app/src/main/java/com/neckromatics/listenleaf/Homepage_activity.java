@@ -1,10 +1,10 @@
 package com.neckromatics.listenleaf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class HomepageActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Homepage_activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Homepage_activity">
+    tools:context=".Book_Reader">
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HOME PAGE"
-        android:textSize="32sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
