@@ -1,12 +1,7 @@
 package com.neckromatics.listenleaf;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +11,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +28,7 @@ public class Login_activity extends AppCompatActivity {
     VideoView videoBackground;
     Button login_btn,signup_btn;
     TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
-    TextView Username, Password,Forgot_password;
+    TextView Username, Password,Forgot_password, test;
     CheckBox saveLoginCheckbox;
     SharedPreferences loginPreferences;
     SharedPreferences.Editor loginPrefsEditor;
@@ -40,6 +38,7 @@ public class Login_activity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser currentUser;
+
 
     // firebase connection
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -71,7 +70,7 @@ public class Login_activity extends AppCompatActivity {
         Password = findViewById(R.id.password);
         videoBackground = findViewById(R.id.t_background);
         Forgot_password = findViewById(R.id.Forgot_password);
-
+        test = findViewById(R.id.spacer);
 
 
         videoBackground.setMediaController(null);
@@ -111,7 +110,14 @@ public class Login_activity extends AppCompatActivity {
                 }
             }
         };
-
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Login_activity.this,Book_Reader.class);
+                startActivity(i);
+                finish();
+            }
+        });
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,6 +153,10 @@ public class Login_activity extends AppCompatActivity {
                                 // Sign in success
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
                                 Intent i = new Intent(Login_activity.this, HomePage.class);
+                                assert user != null;
+                                //grabs the User ID to be able to pull the information from the database
+                                // and sends it to the HomePage activity
+                                i.putExtra("uid",user.getUid());
                                 startActivity(i);
                                 finish(); // Optional: finish the current activity to prevent going back
                             } else {
