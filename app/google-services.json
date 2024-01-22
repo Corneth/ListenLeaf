@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "459326179683",
+    "project_id": "listenleaf",
+    "storage_bucket": "listenleaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459326179683:android:2ce7fc55b7936c78e1ab56",
+        "android_client_info": {
+          "package_name": "com.example.listenleaf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459326179683-97kb41v2od6b97idg9dcq7rsepfoci9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAngiZGTWq6NRwofC4iuNPsLIMv-TfpM-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459326179683-97kb41v2od6b97idg9dcq7rsepfoci9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459326179683:android:040ddbcb02b8529be1ab56",
+        "android_client_info": {
+          "package_name": "com.neckromatics.listenleaf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459326179683-97kb41v2od6b97idg9dcq7rsepfoci9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAngiZGTWq6NRwofC4iuNPsLIMv-TfpM-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459326179683-97kb41v2od6b97idg9dcq7rsepfoci9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
