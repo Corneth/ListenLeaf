@@ -12,65 +12,72 @@
         android:id="@+id/firstNameBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Enter Your First Name"
         android:inputType="text"
         android:textColorHint="#29B6F6"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameBox" />
-
-    <EditText
-        android:id="@+id/lastNameBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Enter Your Last Name"
-        android:inputType="text"
-        android:textColorHint="#29B6F6"
+        android:textColor="#29B6F6"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/UserNameBox"
+        android:id="@+id/lastNameBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Enter Your Last Name"
+        android:inputType="text"
+        android:textColorHint="#29B6F6"
+        android:textColor="#29B6F6"
+
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameBox" />
+
+    <EditText
+        android:id="@+id/emailBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="285dp"
+        android:layout_marginTop="197dp"
+        android:layout_marginBottom="197dp"
         android:ems="10"
-        android:hint="Enter Your User Name"
+        android:hint="Enter Your Email"
         android:inputType="text"
         android:textColorHint="#29B6F6"
+        android:textColor="#29B6F6"
         android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/loginButt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameBox" />
 
     <EditText
-        android:id="@+id/PassCodeBox"
+        android:id="@+id/passwordBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Enter Your Passcode"
+        android:hint="Enter Your Password"
         android:inputType="text"
         android:textColorHint="#29B6F6"
+        android:textColor="#29B6F6"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserNameBox" />
+        app:layout_constraintTop_toBottomOf="@+id/emailBox" />
 
     <Button
-        android:id="@+id/registerButt"
+        android:id="@+id/signUpButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="58dp"
         android:layout_marginBottom="89dp"
-        android:text="Register"
+        android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -79,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
-        android:layout_marginBottom="87dp"
+        android:layout_marginBottom="86dp"
         android:text="Log In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
