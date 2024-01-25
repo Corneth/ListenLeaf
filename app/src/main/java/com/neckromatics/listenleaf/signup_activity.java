@@ -13,7 +13,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class signup_activity extends AppCompatActivity {
-    Button signup_btn;
+    Button signupButt;
 
 
     // Firebase Authentication
