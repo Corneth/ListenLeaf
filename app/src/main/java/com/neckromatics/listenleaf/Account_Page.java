@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.VideoView;
 
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Account_Page extends AppCompatActivity {
     VideoView videoBackground;
+    Button logIn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class Account_Page extends AppCompatActivity {
             }
         });
 
+        logIn = findViewById(R.id.loginButtonAP);
 
         ImageButton goToSignUpV = findViewById(R.id.addNewAccountImgButt);
         goToSignUpV.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +40,18 @@ public class Account_Page extends AppCompatActivity {
                 GoToSignUp();
             };
         });
+
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Account_Page.this,Login_activity.class));
+
+            }
+        });
+
+
+
+
     }
 
     @Override
@@ -47,7 +63,7 @@ public class Account_Page extends AppCompatActivity {
 
     public void GoToSignUp()
     {
-        Intent intent = new Intent(this, signup_activity.class);
+        Intent intent = new Intent(Account_Page.this, signup_activity.class);
         startActivity(intent);
     }
 }

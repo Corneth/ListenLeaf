@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -29,6 +30,9 @@ public class signup_activity extends AppCompatActivity {
 
     Button signUp;
     Button logIn;
+    ImageButton backButt;
+
+
 
 
     // Firebase Authentication
@@ -99,6 +103,24 @@ public class signup_activity extends AppCompatActivity {
 
             }
         });
+
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(signup_activity.this,Login_activity.class));
+            }
+        });
+
+        backButt = findViewById(R.id.backButt);
+
+        backButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(signup_activity.this,Account_Page.class));
+            }
+        });
+
+
 
     }
 
