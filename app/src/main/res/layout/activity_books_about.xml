@@ -10,20 +10,20 @@
 
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="212dp"
-        android:layout_height="37dp"
-        android:fontFamily="@font/gellisto"
-        android:text="Lord of the Flies"
+        android:id="@+id/title"
+        android:layout_width="300dp"
+        android:layout_height="43dp"
+        android:fontFamily="@font/peachcake"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textSize="22sp"
+        android:textSize="32sp"
+        android:text="title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,19 +34,47 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239"
+        app:layout_constraintVertical_bias="0.298"
         app:srcCompat="@drawable/lord_of_the_flies_book_cover" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="281dp"
-        android:layout_height="254dp"
-        android:fontFamily="@font/gellisto"
-        android:text="At the dawn of the next world war, a plane crashes on an uncharted island, stranding a group of schoolboys. At first, with no adult supervision, their freedom is something to celebrate. This far from civilization they can do anything they want. Anything. But as order collapses, as strange howls echo in the night, as terror begins its reign, the hope of adventure seems as far removed from reality as the hope of being rescued."
-        android:textSize="16sp"
+        android:id="@+id/summary"
+        android:layout_width="309dp"
+        android:layout_height="302dp"
+        android:fontFamily="@font/peachcake"
+        android:textSize="19sp"
+        android:text="summaryyyyyyyyyyyyyyyyyyyyuyyyyyy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.904" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="191dp"
+        android:layout_height="25dp"
+        android:fontFamily="@font/peachcake"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="19sp"
+        android:text="author"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.165" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#5CDC74"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
