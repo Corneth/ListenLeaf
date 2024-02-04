@@ -7,4 +7,6 @@
     <color name="accent1">#598b2c</color>
     <color name="accent2">#669D31</color>
     <color name="accent3">#71b340</color>
+    <color name="DarkModeColor">#856F34</color>
+
 </resources>

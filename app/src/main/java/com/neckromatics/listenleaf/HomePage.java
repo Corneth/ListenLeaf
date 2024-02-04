@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +32,7 @@ public class HomePage extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<MyModel> masterDataList;
     private StorageReference storageReference;
+    ImageButton settingsButt;
     VideoView videoBackground;
 
     @Override
@@ -49,6 +52,15 @@ public class HomePage extends AppCompatActivity {
 
         // Fetch data from Firebase Storage
         fetchFirebaseData();
+
+        settingsButt = findViewById(R.id.settingButt);
+
+        settingsButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePage.this,SettingsActivity.class));
+            }
+        });
     }
 
     private void fetchFirebaseData() {
@@ -205,7 +217,9 @@ public class HomePage extends AppCompatActivity {
                 public void onClick(View view) {
                     // Handle the click event here
                     // Extract the URI and send it to the next activity
-                    Intent intent = new Intent(view.getContext(), Book_Reader.class);
+                    Intent intent = new Intent(view.getContext(), BooksAbout.class);
+//                    Toast toast = Toast.makeText(HomePage.this, model.getTitle(), Toast.LENGTH_SHORT);
+//                    toast.show();
                     intent.putExtra("uri", model.getUri()).putExtra("Title",model.getTitle());
                     view.getContext().startActivity(intent);
                 }
@@ -216,5 +230,10 @@ public class HomePage extends AppCompatActivity {
                     .into(holder.image);
         }
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Restart the video after coming from another activity
+        videoBackground.start();
+    }
 }

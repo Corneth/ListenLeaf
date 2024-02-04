@@ -12,65 +12,70 @@
         android:id="@+id/firstNameBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="111dp"
         android:ems="10"
         android:hint="Enter Your First Name"
         android:inputType="text"
+        android:textColor="#29B6F6"
         android:textColorHint="#29B6F6"
         android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameBox" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/lastNameBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Enter Your Last Name"
         android:inputType="text"
+        android:textColor="#29B6F6"
         android:textColorHint="#29B6F6"
         android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameBox" />
 
     <EditText
-        android:id="@+id/UserNameBox"
+        android:id="@+id/emailBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="285dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
-        android:hint="Enter Your User Name"
+        android:hint="Enter Your Email"
         android:inputType="text"
+        android:textColor="#29B6F6"
         android:textColorHint="#29B6F6"
         android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/passwordBox"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/PassCodeBox"
+        android:id="@+id/passwordBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="55dp"
         android:ems="10"
-        android:hint="Enter Your Passcode"
+        android:hint="Enter Your Password"
         android:inputType="text"
+        android:textColor="#29B6F6"
         android:textColorHint="#29B6F6"
         android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserNameBox" />
+        app:layout_constraintBottom_toTopOf="@+id/signUpButt"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/registerButt"
+        android:id="@+id/signUpButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="58dp"
         android:layout_marginBottom="89dp"
-        android:text="Register"
+        android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -79,10 +84,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
-        android:layout_marginBottom="87dp"
+        android:layout_marginBottom="86dp"
         android:text="Log In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backButt"
+        android:layout_width="53dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/backarrownlightblue" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

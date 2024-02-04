@@ -3,6 +3,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
@@ -65,19 +66,47 @@ public class Book_Reader extends AppCompatActivity {
                 Log.e(TAG, "TextToSpeech: Initialization failed");
             }
         });
+        textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+            @Override
+            public void onStart(String utteranceId) {
+            }
 
+            @Override
+            public void onDone(String utteranceId) {
+                // Go to the next page when the engine finishes speaking
+                currentPageIndex++;
+                if (currentPageIndex < pageTexts.size()) {
+                    readPage(currentPageIndex);
+                }
+            }
+
+            @Override
+            public void onError(String utteranceId) {
+            }
+        });
         // Set up the Read Aloud button
         Button readButton = findViewById(R.id.readButton);
         readButton.setOnClickListener(view -> {
-            // Start reading from the current page index
-            readPage(currentPageIndex);
+            if (textToSpeech.isSpeaking()) {
+                // Stop speaking and jump to the last page that was being read
+                textToSpeech.stop();
+                pdfViewPager.setCurrentItem(currentPageIndex);
+            } else {
+                // Start reading from the current page index
+                readPage(currentPageIndex);
+            }
         });
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
             InputStream inputStream = null;
             try {
-
+                File file = new File(getFilesDir(),FILE_NAME);
+                if (file.exists()) {
+                    // The file is already downloaded, read it in this thread
+                    readPdfFile(file);
+                }
+                else{
                 URL url = new URL(uri);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -120,6 +149,21 @@ public class Book_Reader extends AppCompatActivity {
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
                             }
+                            pdfViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                                @Override
+                                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                                }
+
+                                @Override
+                                public void onPageSelected(int position) {
+                                    // Update the current page index when the page changes
+                                    currentPageIndex = position;
+                                }
+
+                                @Override
+                                public void onPageScrollStateChanged(int state) {
+                                }
+                            });
                         } catch (IOException e) {
                             Log.e(TAG, "PDF Load Error: " + Objects.requireNonNull(e.getMessage()));
                             e.printStackTrace();
@@ -128,7 +172,7 @@ public class Book_Reader extends AppCompatActivity {
                 } else {
                     // Log unsuccessful response
                     Log.i(TAG, "Retrieve PDF from URL - HTTP response code: " + urlConnection.getResponseCode());
-                }
+                }}
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -149,10 +193,12 @@ public class Book_Reader extends AppCompatActivity {
             String pageText = pageTexts.get(pageIndex);
             if (!TextUtils.isEmpty(pageText)) {
                 // Speak the page text aloud
-                textToSpeech.speak(pageText, TextToSpeech.QUEUE_FLUSH, null, null);
-
-                // Increment the page index for the next page
-                currentPageIndex++;
+                if(textToSpeech.isSpeaking()){
+                    textToSpeech.stop();
+                }
+                else {
+                    textToSpeech.speak(pageText, TextToSpeech.QUEUE_ADD, null, null);
+                }
             }
         }
     }
@@ -164,5 +210,54 @@ public class Book_Reader extends AppCompatActivity {
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
+    }
+
+    private void readPdfFile(File file) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(() -> {
+            try {
+                PdfReader reader = new PdfReader(file.getAbsolutePath());
+                int pageCount = reader.getNumberOfPages();
+                Log.e("pages:", "" + pageCount);
+                pageTexts = new ArrayList<>();
+
+                // Extract text from each page of the PDF
+                for (int i = 1; i <= pageCount; i++) {
+                    String pageText = PdfTextExtractor.getTextFromPage(reader, i);
+                    if(!pageText.trim().startsWith("Page | " ) || pageText.trim().isEmpty()){
+                        pageTexts.add(pageText);
+                    }
+                }
+
+                // Close the PDF reader
+                reader.close();
+
+                // Set up the ViewPager
+                pdfViewPager = findViewById(R.id.pdfViewPager);
+                pdfPageAdapter = new PdfPageAdapter(getSupportFragmentManager(), pageTexts);
+                pdfViewPager.setAdapter(pdfPageAdapter);
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                pdfViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    }
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        // Update the current page index when the page changes
+                        currentPageIndex = position;
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+                    }
+                });
+            } catch (IOException e) {
+                Log.e(TAG, "PDF Load Error: " + Objects.requireNonNull(e.getMessage()));
+                e.printStackTrace();
+            }
+        });
     }
 }
